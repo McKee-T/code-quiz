@@ -38,6 +38,6 @@ nav {
 }
 #show-leaderboard {
     position: absolute;
-    top: 10px; /* Adjust based on navbar height */
+    top: 10px; 
     left: 20px;
 }

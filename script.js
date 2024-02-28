@@ -1,4 +1,3 @@
-// script.js
 const questions = [
     { question: "Inside which HTML element do we put JavaScript?", answers: ["<script>", "<js>", "<scripting>", "<javascript>"], correct: 0 },
     { question: "Where is the correct place to insert JavaScript?", answers: ["<head>", "Both the <head> section and the <body> section are correct", "<body>", "Neither"], correct: 1 },
@@ -9,10 +8,12 @@ const questions = [
 ];
 let currentQuestionIndex = 0;
 let score = 0;
-let timer; // Declare timer variable at the top
-let interval; // For the timer
+let timer;
+let interval;
 
 document.addEventListener("DOMContentLoaded", () => {
+   
+    document.getElementById('start-quiz').onclick = initializeQuiz;
     document.getElementById('show-leaderboard').onclick = showLeaderboard;
     document.querySelectorAll('.answer-btn').forEach((button, index) => {
         button.onclick = () => checkAnswer(index);
@@ -21,15 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('go-back').onclick = goBack;
     document.getElementById('clear-leaderboard').onclick = clearLeaderboard;
 
-    // Initialize the quiz
-    startQuiz();
+    // Hide quiz container initially
+    document.getElementById('quiz-container').style.display = 'none';
 });
 
-function startQuiz() {
+function initializeQuiz() {
     currentQuestionIndex = 0;
     score = 0;
+    document.getElementById('start-container').style.display = 'none'; 
+    document.getElementById('quiz-container').style.display = 'block'; 
     displayQuestion();
-    startTimer(60); // Start the timer with 90 seconds
+    startTimer(60); 
 }
 
 function displayQuestion() {
@@ -44,14 +47,13 @@ function checkAnswer(selectedIndex) {
     if (questions[currentQuestionIndex].correct === selectedIndex) {
         score++;
     } else {
-        // Deduct 10 seconds for a wrong answer
-        timer -= 10;
+        timer -= 10; 
         if (timer < 0) {
-            timer = 0; // Prevent the timer from going negative
-            endQuiz(); // End the quiz if the timer reaches 0
-            return; // Exit the function to avoid displaying the next question after the quiz ends
+            timer = 0;
+            endQuiz(); 
+            return;
         }
-        updateTimerDisplay(); // Update the timer display after deducting time
+        updateTimerDisplay();
     }
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
@@ -67,6 +69,7 @@ function endQuiz() {
     document.getElementById('score').textContent = score;
     document.getElementById('score-container').style.display = 'block';
 }
+
 
 function submitScore() {
     const initials = document.getElementById('initials').value.trim();
@@ -102,7 +105,7 @@ function goBack() {
     document.getElementById('quiz-container').style.display = 'block';
     document.getElementById('leaderboard').style.display = 'none';
     document.getElementById('score-container').style.display = 'none';
-    startQuiz(); // Restart the quiz
+    startQuiz(); 
 }
 
 function clearLeaderboard() {
@@ -111,9 +114,9 @@ function clearLeaderboard() {
 }
 
 function startTimer(duration) {
-    timer = duration; // Initialize the global timer variable
+    timer = duration;
     interval = setInterval(function () {
-        updateTimerDisplay(); // Use the new function to update the display
+        updateTimerDisplay();
 
         if (--timer < 0) {
             clearInterval(interval);

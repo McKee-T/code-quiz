@@ -1,0 +1,43 @@
+body, html {
+    background-color: lightgrey;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+nav {
+    background-color: rgb(111, 91, 219);
+    padding: 10px 0;
+}
+
+#quiz-container {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+}
+
+#answers {
+    margin-top: 20px;
+}
+
+.answer-btn {
+    background-color: rgb(111, 91, 219);
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    width: 90%;
+}
+
+#score-container, #leaderboard {
+    margin: 20px auto;
+    width: 50%;
+}
+
+#initials {
+    margin-top: 10px;
+}
+#show-leaderboard {
+    position: absolute;
+    top: 10px; /* Adjust based on navbar height */
+    left: 20px;
+}

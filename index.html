@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<nav>
+    <button id="show-leaderboard">Show Leaderboard</button>
+    <div id="timer">60:00</div>
+</nav>
+
+
+<body>
+    <div id="quiz-container">
+        <div id="question">Question will go here</div>
+        <div id="answers">
+            <button class="answer-btn">Answer 1</button>
+            <button class="answer-btn">Answer 2</button>
+            <button class="answer-btn">Answer 3</button>
+            <button class="answer-btn">Answer 4</button>
+        </div>
+    </div>
+    <div id="score-container" style="display: none;">
+        <div>Your score: <span id="score"></span></div>
+        <input type="text" id="initials" placeholder="Enter initials">
+        <button id="submit-score">Submit</button>
+    </div>
+    <div id="leaderboard" style="display: none;">
+        <h2>Leaderboard</h2>
+        <div id="leaderboard-entries"></div>
+        <button id="go-back">Go Back</button>
+        <button id="clear-leaderboard">Clear Leaderboard</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
